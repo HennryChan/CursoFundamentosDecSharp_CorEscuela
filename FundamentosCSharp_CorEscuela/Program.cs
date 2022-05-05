@@ -1,4 +1,5 @@
 ﻿using System;
+using FundamentosCSharp_CorEscuela.Entidades;
 
 namespace FundamentosCSharp_CorEscuela
 {
@@ -6,7 +7,10 @@ namespace FundamentosCSharp_CorEscuela
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-        }
+            var escuela = new Escuela("Platzi Acedemy", 2021);
+            escuela.Paris = "Colombia";
+            escuela.Cuidad = "Bogota";
+            Console.WriteLine(escuela.Nombre);
+         }
     }
 }
