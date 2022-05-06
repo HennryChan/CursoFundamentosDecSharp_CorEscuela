@@ -33,18 +33,27 @@ namespace FundamentosCSharp_CorEscuela
 
             ImprimirCursosEscuela(escuela);
 
-            Predicate<Curso> miAlgoritmo = Predicado;
-            escuela.Cursos.RemoveAll(miAlgoritmo);
+            //Predicate<Curso> miAlgoritmo = Predicado;
+            //escuela.Cursos.RemoveAll(miAlgoritmo);
             WriteLine("--------------------------------");
 
             ImprimirCursosEscuela(escuela);
 
+            /*escuela.Cursos.AddRange(otrColeccion);
+             * ImpimirCursosEscuela(escuela);
+             * escuela.Cursos.RemoveAll(delegate (Curso cur)
+                        {
+                            return cur.Nombre == "301";
+                        });
+            escuela.Cursos.RemoveAll((cur)=> cur.Nombre == "501" && cur.Jornada == TiposJornada.Mañana );
+*/
+
         }
 
-        private static bool Predicado(Curso curobj)
-        {
-            return curobj.Nombre == "301";
-        }
+        //private static bool Predicado(Curso curobj)
+        //{
+        //    return curobj.Nombre == "301";
+        //}
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
