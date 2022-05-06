@@ -1,5 +1,6 @@
 ﻿using System;
 using FundamentosCSharp_CorEscuela.Entidades;
+using static System.Console;
 
 namespace FundamentosCSharp_CorEscuela
 {
@@ -12,31 +13,36 @@ namespace FundamentosCSharp_CorEscuela
             //escuela.Cuidad = "Bogota";
             //escuela.TipoEscuela = TiposEscuela.Primaria;
 
-            var arregloCursos = new Curso[3];
+            //var arregloCursos = new Curso[3]
+            //{
+            //    new Curso(){Nombre = "101"},
+            //    new Curso(){Nombre = "201"},
+            //    new Curso(){Nombre = "301"}
+            //};
 
-            arregloCursos[0] = new Curso()
+            escuela.Cursos = new Curso[]
             {
-                Nombre = "101"
+                new Curso(){Nombre = "101"},
+                new Curso(){Nombre = "201"},
+                new Curso(){Nombre = "301"}
             };
 
-            var curso2 = new Curso()
-            {
-                Nombre = "201"
-            };
-
-            arregloCursos[1] = curso2;
-
-            arregloCursos[2] = new Curso()
-            {
-                Nombre = "301"
-            };
-
-            Console.WriteLine(escuela);
-            Console.WriteLine("===============================");
-           // ImprimirCursosWhile(arregloCursos);
-            ImprimirCursosForeach(arregloCursos);
-
+            ImprimirCursosEscuela(escuela);
         }   
+
+        private static void ImprimirCursosEscuela(Escuela escuela)
+        {
+            WriteLine("-------------------------------");
+            WriteLine("Cursos de la escuela");
+            WriteLine("--------------------------------");
+            if (escuela.Cursos != null)
+            {
+                foreach (var curso in escuela.Cursos)
+                {
+                    WriteLine($"Nombre {curso.Nombre}, Id {curso.UniqueId}");
+                }
+            }
+        }
 
         private static void ImprimirCursosWhile(Curso[] arregloCursos)
         {
@@ -55,6 +61,5 @@ namespace FundamentosCSharp_CorEscuela
                 Console.WriteLine($"Nombre{curso.Nombre}, Id {curso.UniqueId}");
             }
         }
-
     }
 }
