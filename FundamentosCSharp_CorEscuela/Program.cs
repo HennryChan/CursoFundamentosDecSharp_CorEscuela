@@ -33,20 +33,28 @@ namespace FundamentosCSharp_CorEscuela
 
             Console.WriteLine(escuela);
             Console.WriteLine("===============================");
-            ImprimirCursos(arregloCursos);
+           // ImprimirCursosWhile(arregloCursos);
+            ImprimirCursosForeach(arregloCursos);
 
         }   
 
-        private static void ImprimirCursos(Curso[] arregloCursos)
+        private static void ImprimirCursosWhile(Curso[] arregloCursos)
         {
             int contador = 0;
-            while (contador <arregloCursos.Length)
+            while (contador < arregloCursos.Length)
             {
                 Console.WriteLine($"Nombre{arregloCursos[contador].Nombre}, Id {arregloCursos[contador].UniqueId}");
                 contador++;
             }
-
         }
-         
+
+        private static void ImprimirCursosForeach(Curso[] arregloCursos)
+        {
+            foreach (var curso in arregloCursos)
+            {
+                Console.WriteLine($"Nombre{curso.Nombre}, Id {curso.UniqueId}");
+            }
+        }
+
     }
 }
