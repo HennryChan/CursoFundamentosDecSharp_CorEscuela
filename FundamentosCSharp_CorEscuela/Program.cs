@@ -11,7 +11,7 @@ namespace FundamentosCSharp_CorEscuela
         {
             var escuela = new Escuela("Platzi Acedemy", 2021, TiposEscuela.Primaria, cuidad: "Bogota", pais: "colombia");
 
-            escuela.Cursos = new  List<Curso>()
+            escuela.Cursos = new List<Curso>()
             {
                 new Curso(){Nombre = "101", Jornada = TiposJornada.Tarde },
                 new Curso(){Nombre = "201", Jornada = TiposJornada.Tarde },
@@ -21,7 +21,7 @@ namespace FundamentosCSharp_CorEscuela
             escuela.Cursos.Add(new Curso() { Nombre = "102", Jornada = TiposJornada.Maniana });
             escuela.Cursos.Add(new Curso() { Nombre = "202", Jornada = TiposJornada.Maniana });
 
-             var otrColeccion = new List<Curso>()
+            var otrColeccion = new List<Curso>()
             {
                 new Curso(){Nombre = "401", Jornada = TiposJornada.Tarde },
                 new Curso(){Nombre = "501", Jornada = TiposJornada.Tarde },
@@ -29,9 +29,22 @@ namespace FundamentosCSharp_CorEscuela
             };
 
             escuela.Cursos.AddRange(otrColeccion);
+            //escuela.Cursos.Add(temp);
 
             ImprimirCursosEscuela(escuela);
-        }   
+
+            Predicate<Curso> miAlgoritmo = Predicado;
+            escuela.Cursos.RemoveAll(miAlgoritmo);
+            WriteLine("--------------------------------");
+
+            ImprimirCursosEscuela(escuela);
+
+        }
+
+        private static bool Predicado(Curso curobj)
+        {
+            return curobj.Nombre == "301";
+        }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
