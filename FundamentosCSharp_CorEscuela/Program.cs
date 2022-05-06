@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FundamentosCSharp_CorEscuela.Entidades;
 using static System.Console;
 
@@ -9,23 +10,25 @@ namespace FundamentosCSharp_CorEscuela
         static void Main(string[] args)
         {
             var escuela = new Escuela("Platzi Acedemy", 2021, TiposEscuela.Primaria, cuidad: "Bogota", pais: "colombia");
-            //escuela.Pais = "Colombia";
-            //escuela.Cuidad = "Bogota";
-            //escuela.TipoEscuela = TiposEscuela.Primaria;
 
-            //var arregloCursos = new Curso[3]
-            //{
-            //    new Curso(){Nombre = "101"},
-            //    new Curso(){Nombre = "201"},
-            //    new Curso(){Nombre = "301"}
-            //};
-
-            escuela.Cursos = new Curso[]
+            escuela.Cursos = new  List<Curso>()
             {
-                new Curso(){Nombre = "101"},
-                new Curso(){Nombre = "201"},
-                new Curso(){Nombre = "301"}
+                new Curso(){Nombre = "101", Jornada = TiposJornada.Tarde },
+                new Curso(){Nombre = "201", Jornada = TiposJornada.Tarde },
+                new Curso(){Nombre = "301", Jornada = TiposJornada.Tarde }
             };
+
+            escuela.Cursos.Add(new Curso() { Nombre = "102", Jornada = TiposJornada.Maniana });
+            escuela.Cursos.Add(new Curso() { Nombre = "202", Jornada = TiposJornada.Maniana });
+
+             var otrColeccion = new List<Curso>()
+            {
+                new Curso(){Nombre = "401", Jornada = TiposJornada.Tarde },
+                new Curso(){Nombre = "501", Jornada = TiposJornada.Tarde },
+                new Curso(){Nombre = "501", Jornada = TiposJornada.Tarde }
+            };
+
+            escuela.Cursos.AddRange(otrColeccion);
 
             ImprimirCursosEscuela(escuela);
         }   

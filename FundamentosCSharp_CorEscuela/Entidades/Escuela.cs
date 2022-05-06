@@ -18,7 +18,7 @@ namespace FundamentosCSharp_CorEscuela.Entidades
         public string Pais { get; set; }
         public string Cuidad { get; set; }
         public TiposEscuela TipoEscuela { get; set; }
-        public Curso[] Cursos { get; set; }
+        public  List<Curso> Cursos{ get; set; }
 
         //public Escuela(string nombre, int anio)
         //{
