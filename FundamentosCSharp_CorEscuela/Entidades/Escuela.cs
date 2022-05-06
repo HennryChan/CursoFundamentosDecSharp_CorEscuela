@@ -15,14 +15,10 @@ namespace FundamentosCSharp_CorEscuela.Entidades
         }
 
         public int AnioDeCreacion { get; set; }
-
         public string Pais { get; set; }
-
         public string Cuidad { get; set; }
-
-        private int myVar;
-
         public TiposEscuela TipoEscuela { get; set; }
+        public Curso[] Cursos { get; set; }
 
         //public Escuela(string nombre, int anio)
         //{
@@ -41,7 +37,7 @@ namespace FundamentosCSharp_CorEscuela.Entidades
 
         public override string ToString()
         {
-            return $"Nombre: {Nombre}, Tipo: {TipoEscuela}, {System.Environment.NewLine}Pais: {Pais}, Cuidad: {Cuidad}";
+            return $"Nombre: \"{Nombre}\", Tipo: {TipoEscuela}, {System.Environment.NewLine}Pais: {Pais}, Cuidad: {Cuidad}";
         }
     }
 }
