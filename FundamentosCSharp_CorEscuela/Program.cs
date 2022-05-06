@@ -7,10 +7,11 @@ namespace FundamentosCSharp_CorEscuela
     {
         static void Main(string[] args)
         {
-            var escuela = new Escuela("Platzi Acedemy", 2021);
-            escuela.Paris = "Colombia";
-            escuela.Cuidad = "Bogota";
-            Console.WriteLine(escuela.Nombre);
+            var escuela = new Escuela("Platzi Acedemy", 2021, TiposEscuela.Primaria, cuidad: "Bogota", pais: "colombia");
+            //escuela.Pais = "Colombia";
+            //escuela.Cuidad = "Bogota";
+            //escuela.TipoEscuela = TiposEscuela.Primaria;
+            Console.WriteLine(escuela);
          }
     }
 }
