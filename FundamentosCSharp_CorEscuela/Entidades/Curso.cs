@@ -10,10 +10,8 @@ namespace FundamentosCSharp_CorEscuela.Entidades
         public string Nombre { get; set; }
         public TiposJornada Jornada { get; set; }
 
-        //public Curso()
-        //{
-
-        //}
+        public List<Asignatura> Asignaturas { get; set; }
+        public List<Alumno> Alumnos { get; set; }
 
         public Curso()=> UniqueId = Guid.NewGuid().ToString();
     }
