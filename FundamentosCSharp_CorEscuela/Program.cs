@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FundamentosCSharp_CorEscuela.Entidades;
 using FundamentosCSharp_CorEscuela.App;
+using FundamentosCSharp_CorEscuela.Util;
 using static System.Console;
 
 namespace FundamentosCSharp_CorEscuela
@@ -12,14 +13,14 @@ namespace FundamentosCSharp_CorEscuela
         {
             var engine = new EscuelaEngine();
             engine.Inicializar();
+            Printer.WriteTitle("Bienvenidos a la Escuela");
+          //  Printer.Beep(10000, cantidad:1);
             ImprimirCursosEscuela(engine.Escuela);
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
-            WriteLine("----------------------------------------------------");
-            WriteLine("              Cursos de la escuela                  ");
-            WriteLine("----------------------------------------------------");
+            Printer.WriteTitle("Curso de la Escuela");
             if (escuela.Cursos != null)
             {
                 foreach (var curso in escuela.Cursos)
