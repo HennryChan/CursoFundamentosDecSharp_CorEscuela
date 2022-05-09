@@ -20,15 +20,37 @@ namespace FundamentosCSharp_CorEscuela.App
             Escuela = new Escuela("Platzi Acedemy", 2021, TiposEscuela.Primaria, cuidad: "Bogota", pais: "colombia");
 
             CargarCursos();
-           // CargarAlumnos();
             CargaraAsignatura();
-            CargarEvaluaciones();
+            GenerarEvaluacionesAlAzar();
 
         }
 
-        private void CargarEvaluaciones()
+        private void GenerarEvaluacionesAlAzar()
         {
-            throw new NotImplementedException();
+            foreach (var cursos in Escuela.Cursos)
+            {
+                foreach (var alumno in cursos.Alumnos)
+                {
+                    Random randm = new Random();
+
+                    foreach (var asignatura in cursos.Asignaturas)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            var listarEvaluaciones = new Evaluaciones()
+                            {
+                                Asignatura = asignatura,
+                                Nombre = $"{asignatura.Nombre} Ev#{i +1}",
+                                Nota = (float)(5*randm.NextDouble()),
+                                Alumno = alumno
+                            };
+
+                            alumno.Evaluacion.Add(listarEvaluaciones);
+                        }
+                        
+                    }
+                }
+            }
         }
 
         private void CargaraAsignatura()
@@ -79,5 +101,4 @@ namespace FundamentosCSharp_CorEscuela.App
             }
         }
     }
-
 }

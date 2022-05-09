@@ -12,6 +12,7 @@ namespace FundamentosCSharp_CorEscuela.Entidades
 
         public List<Asignatura> Asignaturas { get; set; }
         public List<Alumno> Alumnos { get; set; }
+       // public List<Evaluaciones> Evaluacion { get; set; }
 
         public Curso()=> UniqueId = Guid.NewGuid().ToString();
     }
