@@ -25,6 +25,26 @@ namespace FundamentosCSharp_CorEscuela.App
 
         }
 
+        public List<ObjetoEscuelaBase> GetObjetosEscuela()
+        {
+            var listaObj = new List<ObjetoEscuelaBase>();
+            listaObj.Add(Escuela);
+            listaObj.AddRange(Escuela.Cursos);
+
+            foreach (var curso in Escuela.Cursos)
+            {
+                listaObj.AddRange(curso.Asignaturas);
+                listaObj.AddRange(curso.Alumnos);
+
+                foreach (var alumno in curso.Alumnos)
+                {
+                    listaObj.AddRange(alumno.Evaluaciones);
+                }
+            }
+
+            return listaObj;
+        }
+
         private void GenerarEvaluacionesAlAzar()
         {
             foreach (var cursos in Escuela.Cursos)
@@ -40,24 +60,25 @@ namespace FundamentosCSharp_CorEscuela.App
                             var listarEvaluaciones = new Evaluacion()
                             {
                                 Asignatura = asignatura,
-                                Nombre = $"{asignatura.Nombre} Ev#{i +1}",
-                                Nota = (float)(5*randm.NextDouble()),
+                                Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
+                                Nota = (float)(5 * randm.NextDouble()),
                                 Alumno = alumno
                             };
 
                             alumno.Evaluaciones.Add(listarEvaluaciones);
                         }
-                        
+
                     }
                 }
             }
         }
 
+        #region Metodos de Carga
         private void CargaraAsignatura()
         {
             foreach (var cursos in Escuela.Cursos)
             {
-                 var listaAsignaturas = new  List<Asignatura>()
+                var listaAsignaturas = new List<Asignatura>()
             {
                 new Asignatura(){Nombre = "Matematicas" },
                 new Asignatura(){Nombre = "Educacion Fisica" },
@@ -68,7 +89,7 @@ namespace FundamentosCSharp_CorEscuela.App
             }
         }
 
-        private List<Alumno> GenerarAlumnosAlAzar( int cantidad)
+        private List<Alumno> GenerarAlumnosAlAzar(int cantidad)
         {
             string[] nombre1 = { "Alba", "Felipa", "Eusebio", "Farid", "Donald", "Alvaro", "Nicolás" };
             string[] apellido1 = { "Ruiz", "Sarmiento", "Uribe", "Maduro", "Trump", "Toledo", "Herrera" };
@@ -101,24 +122,7 @@ namespace FundamentosCSharp_CorEscuela.App
             }
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela()
-        {
-            var listaObj = new List<ObjetoEscuelaBase>();
-            listaObj.Add(Escuela);
-            listaObj.AddRange(Escuela.Cursos);
+        #endregion
 
-            foreach (var curso in Escuela.Cursos)
-            {
-                listaObj.AddRange(curso.Asignaturas);
-                listaObj.AddRange(curso.Alumnos);
-
-                foreach (var alumno in curso.Alumnos)
-                {
-                    listaObj.AddRange(alumno.Evaluaciones);
-                }
-            }
-
-            return listaObj;
-        }
     }
 }
