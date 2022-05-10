@@ -18,6 +18,7 @@ namespace FundamentosCSharp_CorEscuela
             //  Printer.Beep(10000, cantidad:1);
             ImprimirCursosEscuela(engine.Escuela);
 
+            int dummy = 0;
             var listaObjetos = engine.GetObjetosEscuela(
                 out int conteoEvaluaciones,
                 out int conteoCursos,

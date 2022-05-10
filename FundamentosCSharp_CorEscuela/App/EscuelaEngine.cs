@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using FundamentosCSharp_CorEscuela.Entidades;
 using System.Linq;
+using FundamentosCSharp_CorEscuela.Util;
 
 namespace FundamentosCSharp_CorEscuela.App
 {
@@ -23,6 +24,26 @@ namespace FundamentosCSharp_CorEscuela.App
             CargaraAsignatura();
             GenerarEvaluacionesAlAzar();
 
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true)
+        {
+            return GetObjetosEscuela(out int dummy, out dummy, out dummy, out dummy);
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+                      out int conteoEvaluaciones, out int conteoCursos,
+                      bool traeEvaluaciones = true,
+                      bool traeAlumnos = true,
+                      bool traeAsignaturas = true,
+                      bool traeCursos = true
+                      )
+        {
+            return GetObjetosEscuela(out conteoEvaluaciones, out conteoCursos, out int dummy, out dummy);
         }
 
         public List<ObjetoEscuelaBase> GetObjetosEscuela(
