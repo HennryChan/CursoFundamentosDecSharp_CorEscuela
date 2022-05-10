@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FundamentosCSharp_CorEscuela.Entidades
 {
-    public class Curso:ObjestoEscuelaBase
+    public class Curso:ObjetoEscuelaBase
     {
         public TiposJornada Jornada { get; set; }
         public List<Asignatura> Asignaturas { get; set; }

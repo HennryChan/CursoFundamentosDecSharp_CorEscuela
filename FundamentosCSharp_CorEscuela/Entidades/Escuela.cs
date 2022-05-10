@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FundamentosCSharp_CorEscuela.Entidades
 {
-    public class Escuela:ObjestoEscuelaBase
+    public class Escuela:ObjetoEscuelaBase
     {
 
         public int AnioDeCreacion { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FundamentosCSharp_CorEscuela.Entidades
 {
-    public class Asignatura:ObjestoEscuelaBase
+    public class Asignatura:ObjetoEscuelaBase
     {
 
     }

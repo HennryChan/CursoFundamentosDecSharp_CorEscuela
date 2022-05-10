@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FundamentosCSharp_CorEscuela.Entidades
 {
-    public class Alumno:ObjestoEscuelaBase
+    public class Alumno:ObjetoEscuelaBase
     {
         public List<Evaluacion> Evaluaciones { get; set; } = new List<Evaluacion>();
     }
