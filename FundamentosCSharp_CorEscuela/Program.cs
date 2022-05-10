@@ -19,8 +19,10 @@ namespace FundamentosCSharp_CorEscuela
             ImprimirCursosEscuela(engine.Escuela);
 
             var listaObjetos = engine.GetObjetosEscuela(
-                false, false, false, false
-
+                out int conteoEvaluaciones,
+                out int conteoCursos,
+                out int conteoAsignaturas,
+                out int conteoAlumnos
                 );
 
         }
