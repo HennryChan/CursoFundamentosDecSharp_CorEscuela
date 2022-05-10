@@ -18,13 +18,11 @@ namespace FundamentosCSharp_CorEscuela
             //  Printer.Beep(10000, cantidad:1);
             ImprimirCursosEscuela(engine.Escuela);
 
-            var listaObjetos = engine.GetObjetosEscuela();
+            var listaObjetos = engine.GetObjetosEscuela(
+                false, false, false, false
 
-            //engine.Escuela.LimpiarLugar();
+                );
 
-            var listaILugar = from obj in listaObjetos  
-                              where obj is Alumno
-                              select (Alumno)obj;
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)

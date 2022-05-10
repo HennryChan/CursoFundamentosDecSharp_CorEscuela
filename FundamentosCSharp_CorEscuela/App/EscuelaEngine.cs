@@ -25,24 +25,51 @@ namespace FundamentosCSharp_CorEscuela.App
 
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela()
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+            out int conteoEvaluaciones,
+            out int conteoCursos,
+            out int conteoAsignaturas,
+            out int conteoAlumnos,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+            )
         {
+            conteoEvaluaciones= 0;
+            conteoCursos = 0; 
+            conteoAsignaturas = 0;
+            conteoAlumnos = 0;
+
             var listaObj = new List<ObjetoEscuelaBase>();
             listaObj.Add(Escuela);
-            listaObj.AddRange(Escuela.Cursos);
 
+            if(traeCursos)
+                listaObj.AddRange(Escuela.Cursos);
+
+            conteoCursos = Escuela.Cursos.Count;
             foreach (var curso in Escuela.Cursos)
             {
-                listaObj.AddRange(curso.Asignaturas);
-                listaObj.AddRange(curso.Alumnos);
+                conteoAsignaturas += curso.Asignaturas.Count;
+                conteoAlumnos += curso.Alumnos.Count;
 
-                foreach (var alumno in curso.Alumnos)
+                if(traeAsignaturas)
+                    listaObj.AddRange(curso.Asignaturas);
+
+                if (traeAlumnos)
+                    listaObj.AddRange(curso.Alumnos);
+
+                if (traeEvaluaciones)
                 {
-                    listaObj.AddRange(alumno.Evaluaciones);
+                    foreach (var alumno in curso.Alumnos)
+                    {
+                        listaObj.AddRange(alumno.Evaluaciones);
+                        conteoEvaluaciones += alumno.Evaluaciones.Count;
+                    }
                 }
             }
 
-            return listaObj;
+            return (listaObj, conteoEvaluaciones);
         }
 
         private void GenerarEvaluacionesAlAzar()
