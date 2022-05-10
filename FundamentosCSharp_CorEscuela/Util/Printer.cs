@@ -7,7 +7,7 @@ namespace FundamentosCSharp_CorEscuela.Util
 {
     public static class Printer
     {
-        public static void DibujarLinea(int tam = 10)
+        public static void DrawLine(int tam = 10)
         {
             WriteLine("".PadLeft(tam, '-'));
         }
@@ -15,9 +15,9 @@ namespace FundamentosCSharp_CorEscuela.Util
         public static void WriteTitle(string titulo)
         {
             var tamanio = titulo.Length + 4;
-            DibujarLinea(tamanio);
+            DrawLine(tamanio);
             WriteLine($"| {titulo} |");
-            DibujarLinea(tamanio);
+            DrawLine(tamanio);
         }
 
         public static void Beep(int hz=1000, int tiempo=500, int cantidad = 1)
