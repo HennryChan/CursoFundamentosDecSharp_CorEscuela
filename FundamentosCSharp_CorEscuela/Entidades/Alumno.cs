@@ -4,14 +4,8 @@ using System.Text;
 
 namespace FundamentosCSharp_CorEscuela.Entidades
 {
-    public class Alumno
+    public class Alumno:ObjestoEscuelaBase
     {
-        public string UniqueId { get; set; }
-        public string Nombre { get; set; }
-        public List<Evaluaciones> Evaluacion { get; set; }
-
-        public Alumno()=> UniqueId = Guid.NewGuid().ToString();
-
-
+        public List<Evaluacion> Evaluaciones { get; set; } = new List<Evaluacion>();
     }
 }

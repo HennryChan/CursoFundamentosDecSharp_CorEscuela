@@ -37,7 +37,7 @@ namespace FundamentosCSharp_CorEscuela.App
                     {
                         for (int i = 0; i < 5; i++)
                         {
-                            var listarEvaluaciones = new Evaluaciones()
+                            var listarEvaluaciones = new Evaluacion()
                             {
                                 Asignatura = asignatura,
                                 Nombre = $"{asignatura.Nombre} Ev#{i +1}",
@@ -45,7 +45,7 @@ namespace FundamentosCSharp_CorEscuela.App
                                 Alumno = alumno
                             };
 
-                            alumno.Evaluacion.Add(listarEvaluaciones);
+                            alumno.Evaluaciones.Add(listarEvaluaciones);
                         }
                         
                     }
