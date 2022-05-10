@@ -39,14 +39,13 @@ namespace FundamentosCSharp_CorEscuela.Entidades
         {
             Printer.DrawLine();
             Console.WriteLine("Limpiando Escuela..");
-
             foreach (var curso in Cursos)
             {
                 curso.LimpiarLugar();
             }
 
             Printer.WriteTitle($"Escuela {Nombre} Limpia");
-            Printer.Beep(1000, cantidad: 3);
+         //   Printer.Beep(1000, cantidad: 3);
         }
     }
 }

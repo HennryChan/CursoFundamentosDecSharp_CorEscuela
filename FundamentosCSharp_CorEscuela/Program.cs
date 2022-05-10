@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FundamentosCSharp_CorEscuela.Entidades;
 using FundamentosCSharp_CorEscuela.App;
 using FundamentosCSharp_CorEscuela.Util;
+using System.Linq;
 using static System.Console;
 
 namespace FundamentosCSharp_CorEscuela
@@ -18,6 +19,12 @@ namespace FundamentosCSharp_CorEscuela
             ImprimirCursosEscuela(engine.Escuela);
 
             var listaObjetos = engine.GetObjetosEscuela();
+
+            //engine.Escuela.LimpiarLugar();
+
+            var listaILugar = from obj in listaObjetos  
+                              where obj is Alumno
+                              select (Alumno)obj;
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
