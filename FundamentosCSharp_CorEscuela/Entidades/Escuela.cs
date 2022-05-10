@@ -1,15 +1,17 @@
-﻿using System;
+﻿using FundamentosCSharp_CorEscuela.Util;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace FundamentosCSharp_CorEscuela.Entidades
 {
-    public class Escuela:ObjetoEscuelaBase
+    public class Escuela:ObjetoEscuelaBase, ILugar
     {
 
         public int AnioDeCreacion { get; set; }
         public string Pais { get; set; }
         public string Cuidad { get; set; }
+        public string Direccion { get; set; }
         public TiposEscuela TipoEscuela { get; set; }
         public  List<Curso> Cursos{ get; set; }
 
@@ -31,6 +33,20 @@ namespace FundamentosCSharp_CorEscuela.Entidades
         public override string ToString()
         {
             return $"Nombre: \"{Nombre}\", Tipo: {TipoEscuela}, {System.Environment.NewLine}Pais: {Pais}, Cuidad: {Cuidad}";
+        }
+
+        public void LimpiarLugar()
+        {
+            Printer.DrawLine();
+            Console.WriteLine("Limpiando Escuela..");
+
+            foreach (var curso in Cursos)
+            {
+                curso.LimpiarLugar();
+            }
+
+            Printer.WriteTitle($"Escuela {Nombre} Limpia");
+            Printer.Beep(1000, cantidad: 3);
         }
     }
 }
