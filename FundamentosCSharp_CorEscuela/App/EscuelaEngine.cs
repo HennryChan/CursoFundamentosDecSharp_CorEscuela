@@ -25,11 +25,12 @@ namespace FundamentosCSharp_CorEscuela.App
             GenerarEvaluacionesAlAzar();
         }
 
-        public Dictionary<string, IEnumerable<ObjetoEscuelaBase> > GetDiccionarioObjetos()
+        public Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
-            var diccionario= new Dictionary<string, IEnumerable<ObjetoEscuelaBase>>();
-            diccionario.Add("Escuela", new List<ObjetoEscuelaBase> { Escuela });
-            diccionario.Add("Cursos", Escuela.Cursos);
+            var diccionario = new Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>();
+            diccionario.Add(LlaveDiccionario.Escuela, new[] { Escuela });
+            diccionario.Add(LlaveDiccionario.Curso, Escuela.Cursos.Cast<ObjetoEscuelaBase>());
+            diccionario[LlaveDiccionario.Curso] = Escuela.Cursos.Cast<ObjetoEscuelaBase>();
             return diccionario;
         }
 
