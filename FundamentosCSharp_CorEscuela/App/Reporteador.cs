@@ -21,22 +21,29 @@ namespace FundamentosCSharp_CorEscuela.App
             _diccionario = dicObjEsc;
         }
 
-        public IEnumerable<Escuela> GetListaEvaluaciones()
+        public IEnumerable<Evaluacion> GetListaEvaluaciones()
         {
-            IEnumerable<Escuela> rta;
-            if (_diccionario.TryGetValue(LlaveDiccionario.Escuela, out IEnumerable<ObjetoEscuelaBase>lista))
+            if (_diccionario.TryGetValue(LlaveDiccionario.Evaluacion, out IEnumerable<ObjetoEscuelaBase>lista))
             {
-                rta = lista.Cast<Escuela>();
+                return  lista.Cast<Evaluacion>();
             }
             {
-                rta = null;
-            }
-            return rta;
+                 return new List<Evaluacion>();
+            }          
         }
 
-        //public IEnumerable<Evaluacion> GetEvaluacions()
-        //{
-        //    _diccionario[LlaveDiccionario.Evaluacion];
-        //}
+        public IEnumerable<string> GetListaAsignaturas()
+        {
+            var listaEvaluaciones = GetListaEvaluaciones();
+
+            return (from Evaluacion ev in listaEvaluaciones select ev.Asignatura.Nombre).Distinct();
+        }
+
+        public Dictionary<string, IEnumerable<Evaluacion>> GetDicListaEvaluaXAsig()
+        {
+            var dictaRta = new Dictionary<string, IEnumerable<Evaluacion>>();
+
+            return dictaRta;
+        }
     }
 }

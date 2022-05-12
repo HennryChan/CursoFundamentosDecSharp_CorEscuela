@@ -22,6 +22,8 @@ namespace FundamentosCSharp_CorEscuela
             ImprimirCursosEscuela(engine.Escuela);
 
             var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
+            var evaList = reporteador.GetListaEvaluaciones();
+            var lisaAsig = reporteador.GetListaAsignaturas();
 
 
         }
