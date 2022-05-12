@@ -21,12 +21,8 @@ namespace FundamentosCSharp_CorEscuela
             //  Printer.Beep(10000, cantidad:1);
             ImprimirCursosEscuela(engine.Escuela);
 
-            int dummy = 0;
-            var listaObjetos = engine.GetObjetosEscuela();
+            var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
 
-            var dictmp = engine.GetDiccionarioObjetos();
-
-            engine.ImprimirDiccionario(dictmp, true);
 
         }
 
