@@ -25,6 +25,19 @@ namespace FundamentosCSharp_CorEscuela.App
             GenerarEvaluacionesAlAzar();
         }
 
+        public void ImprimirDiccionario(Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>dic)
+        {
+            foreach (var obj in dic)
+            {
+                Printer.WriteTitle(obj.Key.ToString());
+
+                foreach (var val in obj.Value)
+                {
+                    Console.WriteLine(val);
+                }
+            }
+        }
+
         public Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
             var diccionario = new Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>();

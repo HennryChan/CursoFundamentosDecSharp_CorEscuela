@@ -21,7 +21,9 @@ namespace FundamentosCSharp_CorEscuela
             int dummy = 0;
             var listaObjetos = engine.GetObjetosEscuela();
 
-            
+            var dictmp = engine.GetDiccionarioObjetos();
+
+            engine.ImprimirDiccionario(dictmp);
 
         }
 
