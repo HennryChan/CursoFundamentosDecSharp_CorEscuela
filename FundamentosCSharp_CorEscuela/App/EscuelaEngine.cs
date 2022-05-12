@@ -28,9 +28,29 @@ namespace FundamentosCSharp_CorEscuela.App
         public Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
             var diccionario = new Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>();
+            
             diccionario.Add(LlaveDiccionario.Escuela, new[] { Escuela });
             diccionario.Add(LlaveDiccionario.Curso, Escuela.Cursos.Cast<ObjetoEscuelaBase>());
-            diccionario[LlaveDiccionario.Curso] = Escuela.Cursos.Cast<ObjetoEscuelaBase>();
+
+            var listaTempEvaluacion = new List<Evaluacion>();
+            var listaTempAsignatura = new List<Asignatura>();
+            var listaTempAlumno = new List<Alumno>();
+
+            foreach (var cur in Escuela.Cursos)
+            {
+                listaTempAsignatura.AddRange(cur.Asignaturas);
+                listaTempAlumno.AddRange(cur.Alumnos);
+
+                foreach (var alum in cur.Alumnos)
+                {
+                    listaTempEvaluacion.AddRange(alum.Evaluaciones);
+                }
+            }
+
+            diccionario.Add(LlaveDiccionario.Evaluacion, listaTempEvaluacion.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlaveDiccionario.Asignatura, listaTempAsignatura.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlaveDiccionario.Alumno, listaTempAlumno.Cast<ObjetoEscuelaBase>());
+
             return diccionario;
         }
 

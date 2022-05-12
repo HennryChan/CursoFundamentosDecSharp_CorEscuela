@@ -9,7 +9,8 @@ namespace FundamentosCSharp_CorEscuela.Entidades
         Escuela,
         Curso,
         Alumno,
-        Asignatura
+        Asignatura,
+        Evaluacion
     }
 
     //public struct LlaveDiccionario
