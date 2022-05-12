@@ -46,7 +46,6 @@ namespace FundamentosCSharp_CorEscuela.App
         public Dictionary<string, IEnumerable<Evaluacion>> GetDicEvaluaXAsig()
         {
             var dictaRta = new Dictionary<string, IEnumerable<Evaluacion>>();
-
             var listaAsig = GetListaAsignaturas(out var listaEval);
 
             foreach (var asig in listaAsig)
@@ -57,8 +56,26 @@ namespace FundamentosCSharp_CorEscuela.App
 
                 dictaRta.Add(asig, evalsAsig);
             }
-
             return dictaRta;
+        }
+
+        public Dictionary<string, IEnumerable<object>> GetPromedioAlumnoPorAsignatura()
+        {
+            var rta = new Dictionary<string, IEnumerable<object>>();
+            var dicEvalXAsig = GetDicEvaluaXAsig();
+
+            foreach (var asigConEval in dicEvalXAsig)
+            {
+                var dummy = from eval in asigConEval.Value
+                            select new
+                            {
+                                eval.Alumno.UniqueId,
+                                alumnoNombre = eval.Alumno.Nombre,
+                                nombreEval = eval.Nombre,
+                                eval.Nota
+                            };
+            }
+            return rta;
         }
     }
 }
