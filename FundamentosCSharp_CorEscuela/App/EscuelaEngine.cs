@@ -25,7 +25,7 @@ namespace FundamentosCSharp_CorEscuela.App
             GenerarEvaluacionesAlAzar();
         }
 
-        public void ImprimirDiccionario(Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>dic)
+        public void ImprimirDiccionario(Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>dic, bool imprEval=false)
         {
             foreach (var obj in dic)
             {
@@ -33,7 +33,38 @@ namespace FundamentosCSharp_CorEscuela.App
 
                 foreach (var val in obj.Value)
                 {
-                    Console.WriteLine(val);
+                    switch (obj.Key)
+                    {
+                        case LlaveDiccionario.Evaluacion:
+                            if (imprEval)
+                            {
+                                Console.WriteLine(val);
+                            }
+                            break;
+                        case LlaveDiccionario.Escuela:
+                            if (imprEval)
+                            {
+                                Console.WriteLine("Escuela: " + val);
+                            }
+                            break;
+                        case LlaveDiccionario.Alumno:
+                            if (imprEval)
+                            {
+                                Console.WriteLine("Alumno: "+ val.Nombre);
+                            }
+                            break;
+                        case LlaveDiccionario.Curso:
+                            var curtep = val as Curso;
+                            if (curtep!=null)
+                            {
+                                int count = curtep.Alumnos.Count;
+                                Console.WriteLine("Curso: "+ val.Nombre + " Cantidad Alumno: " + count);
+                            }
+                            break;
+                        default:
+                            Console.WriteLine(val);
+                            break;
+                    }
                 }
             }
         }
@@ -136,12 +167,12 @@ namespace FundamentosCSharp_CorEscuela.App
 
         private void GenerarEvaluacionesAlAzar()
         {
+            Random randm = new Random();
+
             foreach (var cursos in Escuela.Cursos)
             {
                 foreach (var alumno in cursos.Alumnos)
                 {
-                    Random randm = new Random();
-
                     foreach (var asignatura in cursos.Asignaturas)
                     {
                         for (int i = 0; i < 5; i++)
@@ -150,7 +181,7 @@ namespace FundamentosCSharp_CorEscuela.App
                             {
                                 Asignatura = asignatura,
                                 Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
-                                Nota = (float)(5 * randm.NextDouble()),
+                                Nota = MathF.Round(5 * (float)randm.NextDouble(), 2),
                                 Alumno = alumno
                             };
 
