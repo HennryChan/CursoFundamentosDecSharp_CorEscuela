@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using FundamentosCSharp_CorEscuela.Entidades;
@@ -18,6 +19,19 @@ namespace FundamentosCSharp_CorEscuela.App
                 
             }
             _diccionario = dicObjEsc;
+        }
+
+        public IEnumerable<Escuela> GetListaEvaluaciones()
+        {
+            IEnumerable<Escuela> rta;
+            if (_diccionario.TryGetValue(LlaveDiccionario.Escuela, out IEnumerable<ObjetoEscuelaBase>lista))
+            {
+                rta = lista.Cast<Escuela>();
+            }
+            {
+                rta = null;
+            }
+            return rta;
         }
 
         //public IEnumerable<Evaluacion> GetEvaluacions()
