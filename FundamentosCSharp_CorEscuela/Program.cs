@@ -27,8 +27,24 @@ namespace FundamentosCSharp_CorEscuela
             var listaEvalXAsig = reporteador.GetDicEvaluaXAsig();
             var listaPromXSig = reporteador.GetDicEvaluaXAsig();
             //var listaTopPromedio = reporteador.GetPromedioPorAsignaturaTop();
+            Printer.WriteTitle("captura de una Evaluacion por consola");
+            var newEval = new Evaluacion();
+            string nombre;
+            string nota;
 
+            WriteLine("Ingresa el nombre de la evaluacion");
+            Printer.PrecionaENTER();
+            nombre = ReadLine();
 
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                throw new ArgumentException("El valor del nombre no puede ser vacio");
+            }
+            else
+            {
+                newEval.Nombre = nombre.ToLower();
+                WriteLine("El nombre de la evaluacion ha sido ingresado correctamente");
+            }
         }
 
         private static void AccionDelEvento(object sender, EventArgs e)

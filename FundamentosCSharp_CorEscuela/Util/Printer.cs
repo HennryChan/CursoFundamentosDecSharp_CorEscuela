@@ -20,6 +20,11 @@ namespace FundamentosCSharp_CorEscuela.Util
             DrawLine(tamanio);
         }
 
+        public static void PrecionaENTER()
+        {
+            WriteLine("Preciona ENTER para continuar");
+        }
+
         public static void Beep(int hz=1000, int tiempo=500, int cantidad = 1)
         {
             while(cantidad-- > 0)
