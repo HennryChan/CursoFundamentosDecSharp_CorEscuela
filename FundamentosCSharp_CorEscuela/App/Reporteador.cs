@@ -36,6 +36,7 @@ namespace FundamentosCSharp_CorEscuela.App
         {
             return GetListaAsignaturas(out var dummy);
         }
+
         public IEnumerable<string> GetListaAsignaturas(out IEnumerable<Evaluacion> listaEvaluaciones)
         {
             listaEvaluaciones = GetListaEvaluaciones();
@@ -82,5 +83,22 @@ namespace FundamentosCSharp_CorEscuela.App
             }
             return rta;
         }
+
+    //    public Dictionary<string, IEnumerable<AlumnoPromedio>> GetPromedioPorAsignaturaTop()
+    //    {
+    //        var resp = new Dictionary<string, IEnumerable<AlumnoPromedio>>();
+    //        var dicPromAlumPorAsignatura = GetPromedioAlumnoPorAsignatura();
+
+    //        foreach (var item in dicPromAlumPorAsignatura)
+    //        {
+    //            var dummy = from ap in item.Value
+    //                         orderby ap.promedio descending
+    //                         select ap;
+
+    //            resp.Add(item.Key, dummy);
+    //        }
+
+    //        return resp;
+    //    }
     }
 }

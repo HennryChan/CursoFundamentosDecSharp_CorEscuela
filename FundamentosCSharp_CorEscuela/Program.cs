@@ -12,7 +12,7 @@ namespace FundamentosCSharp_CorEscuela
     {
         static void Main(string[] args)
         {
-            AppDomain.CurrentDomain.ProcessExit += AccionDelEvento;
+            //AppDomain.CurrentDomain.ProcessExit += AccionDelEvento;
            // AppDomain.CurrentDomain.ProcessExit += (o, s) => Printer.Beep(2000, 1000, 1);
 
             var engine = new EscuelaEngine();
@@ -26,6 +26,8 @@ namespace FundamentosCSharp_CorEscuela
             var lisaAsig = reporteador.GetListaAsignaturas();
             var listaEvalXAsig = reporteador.GetDicEvaluaXAsig();
             var listaPromXSig = reporteador.GetDicEvaluaXAsig();
+            //var listaTopPromedio = reporteador.GetPromedioPorAsignaturaTop();
+
 
         }
 
