@@ -67,12 +67,12 @@ namespace FundamentosCSharp_CorEscuela.App
             foreach (var asigConEval in dicEvalXAsig)
             {
                 var dummy = from eval in asigConEval.Value
+                            group eval by eval.Alumno.UniqueId
+                            into grupoEvalsAlumno
                             select new
                             {
-                                eval.Alumno.UniqueId,
-                                alumnoNombre = eval.Alumno.Nombre,
-                                nombreEval = eval.Nombre,
-                                eval.Nota
+                                AlumnoId = grupoEvalsAlumno.Key,
+                                Promedio = grupoEvalsAlumno.Average(evaluacion=>evaluacion.Nota)
                             };
             }
             return rta;
