@@ -25,6 +25,7 @@ namespace FundamentosCSharp_CorEscuela
             var evaList = reporteador.GetListaEvaluaciones();
             var lisaAsig = reporteador.GetListaAsignaturas();
             var listaEvalXAsig = reporteador.GetDicEvaluaXAsig();
+            var listaPromXSig = reporteador.GetDicEvaluaXAsig();
 
         }
 
